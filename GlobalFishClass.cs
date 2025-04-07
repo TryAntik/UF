@@ -1,11 +1,13 @@
-// first version
+/* lst upd. <07.04.2025> 
+ * i changed a access for a lot of vars from private to protected 
+ */
 
 using UnityEngine;
 
-abstract class Fish {
-    public string _name { get; private set; }
-    private float _minWeight;
-    private float _maxWeight;
+internal abstract class Fish {
+    public string _name { get; protected set; }
+    protected float _minWeight;
+    protected float _maxWeight;
     
     public float MinWeight
     {
@@ -27,7 +29,8 @@ abstract class Fish {
 
     public Fish(string name, float minWeight, float maxWeight)
     {
-        _name = name;
+        _name = name ?? "Unknown Fish";
+
         MinWeight = minWeight >= 0.05f ? minWeight : 0.05f;
         MaxWeight = maxWeight <= 200f ? maxWeight : 200f;
     }
@@ -39,6 +42,17 @@ abstract class Fish {
     }       
 }
 
-class Carp : Fish { }
-class CrucianCarp : Fish { }
-class Pike : Fish { }
+class Carp : Fish {
+    public Carp(string name, float minWeight, float maxWeight) 
+        : base(name ?? "Carp", minWeight, maxWeight) { }
+}
+
+class Pike : Fish {
+    public Pike(string name, float minWeight, float maxWeight) 
+        : base(name ?? "Pike", minWeight, maxWeight) { }
+}
+
+class CrucianCarp : Fish {
+    public CrucianCarp(string name, float minWeight, float maxWeight) 
+        : base(name ?? "Crucian Carp", minWeight, maxWeight) { }
+}
