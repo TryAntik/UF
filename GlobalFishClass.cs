@@ -18,8 +18,8 @@ abstract class Fish {
     
     public float MaxWeight
     {
-        get { return _maxWeight; }
-        set {
+        get { return _maxWeight; } // accessor
+        set { // mutator
             if(value <= 200f)
                 _maxWeight = value;
             }
