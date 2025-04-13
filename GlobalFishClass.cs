@@ -29,7 +29,7 @@ internal abstract class Fish {
 
     public Fish(string name, float minWeight, float maxWeight)
     {
-        _name = name ?? "Unknown Fish";
+        _name = name;
 
         MinWeight = minWeight >= 0.05f ? minWeight : 0.05f;
         MaxWeight = maxWeight <= 200f ? maxWeight : 200f;
@@ -37,7 +37,7 @@ internal abstract class Fish {
     
     public void CoutInfo() {
         Debug.Log(" 🎣 Information 🎣 ");
-        Debug.Log($" 🐟 Name: {_name} ");
+        Debug.Log($" 🐟 Name: " + (_name ?? "Unknown") );
         Debug.Log($" 🌊 Weight: {_minWeight} - {_maxWeight} ");
     }       
 }
